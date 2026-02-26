@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewsApp.Pages.NewsListPage"
+             x:Name="NewsListContentPage">
+
+    <Grid RowDefinitions="*"> <!--We only need one row here bc CollectionView.ItemsLayout will populate a list of articles as rows within this single Grid row-->
+        <CollectionView Grid.Row="0"
+                Margin= "5"
+                x:Name="CvNewsArticles"
+                SelectionMode="Single"
+                SelectionChanged="CvNewsArticles_SelectionChanged">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="15"/>  <!--This tells the list to be scrollable and vertical -->
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <!--The actual items in this second CollectionView-->
+                <DataTemplate>
+                    <Border Padding="5" Margin="5">
+                        <HorizontalStackLayout Padding="10" Spacing="0" VerticalOptions="Center">
+                            <Image HeightRequest="200" Aspect="Fill" Source="{Binding Image}"/>
+                            <Label FontSize="Medium" Text="{Binding Title}"/>
+                        </HorizontalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
