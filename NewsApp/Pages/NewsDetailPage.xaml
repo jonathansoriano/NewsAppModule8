@@ -2,11 +2,20 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewsApp.Pages.NewsDetailPage"
-             Title="NewsDetailPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
+             Title="News Detail">
+    <VerticalStackLayout
+        Spacing="10"
+        Margin="5">
+        <Image
+            x:Name="ArticleImage"
+            Aspect="AspectFit"/>
+        <Label
+            x:Name="ArticleTitleLabel"
+            FontSize="Title"
+            FontAttributes="Bold"
             HorizontalOptions="Center" />
+        <Label
+            x:Name="ArticleContentLabel"
+            FontSize="Body"/>
     </VerticalStackLayout>
 </ContentPage>

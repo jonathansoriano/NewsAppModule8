@@ -39,6 +39,17 @@ public partial class NewsListPage : ContentPage
 
     private void CvNewsArticles_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
+        // Get selected Category from the CollectionView and explicitly cast it as type Category
+        var selectedArticle = e.CurrentSelection.FirstOrDefault() as Article;
 
+        // If the cast is unsuccessful, exit this method without doing anything
+        if (selectedArticle == null)
+            return;
+
+        // Otherwise, lets go to the next page
+        Navigation.PushAsync(new NewsDetailPage(selectedArticle));
+
+        // Deselect the item in the CollectionView by setting the SelectedItem property to null.
+        ((CollectionView)sender).SelectedItem = null;
     }
 }
