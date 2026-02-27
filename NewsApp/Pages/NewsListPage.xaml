@@ -3,39 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewsApp.Pages.NewsListPage"
              x:Name="NewsListContentPage">
-    <ScrollView>
-        <Grid RowDefinitions="Auto">
-            <!--We only need one row here bc CollectionView.ItemsLayout will populate a list of articles as rows within this single Grid row-->
-            <CollectionView Grid.Row="0"
-            Margin= "5"
-            x:Name="CvNewsArticles"
-            SelectionMode="Single"
-            SelectionChanged="CvNewsArticles_SelectionChanged">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-                    <!--This tells the list to be scrollable and vertical -->
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <!--The actual items in this second CollectionView-->
-                    <DataTemplate>
-                        <Border Padding="5" Margin="5">
-                            <Grid Padding="10" ColumnDefinitions="100,*" ColumnSpacing="10">
-                                <Image Grid.Column="0"
-                                       HeightRequest="100"
-                                       WidthRequest="100"
-                                       Aspect="Fill"
-                                       Source="{Binding Image}" />
+    <Grid RowDefinitions="*">
+        <!--We only need one row here bc CollectionView.ItemsLayout will populate a list of articles as rows within this single Grid row-->
+        <CollectionView Grid.Row="0"
+                        Margin= "5"
+                        x:Name="CvNewsArticles"
+                        SelectionMode="Single"
+                        SelectionChanged="CvNewsArticles_SelectionChanged">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                <!--This tells the list to be scrollable and vertical -->
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <!--The actual items in this second CollectionView-->
+                <DataTemplate>
+                    <Border Padding="5" Margin="5">
+                        <Grid Padding="10" ColumnDefinitions="100,*" ColumnSpacing="10">
+                            <Image Grid.Column="0"
+                                    HeightRequest="100"
+                                    WidthRequest="100"
+                                    Aspect="Fill"
+                                    Source="{Binding Image}" />
 
-                                <Label Grid.Column="1"
-                                       FontSize="Medium"
-                                       LineBreakMode="WordWrap"
-                                       Text="{Binding Title}" />
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
-    </ScrollView>
-    
+                            <Label Grid.Column="1"
+                                    FontSize="Medium"
+                                    LineBreakMode="WordWrap"
+                                    Text="{Binding Title}" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>
