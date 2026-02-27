@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewsApp.Pages.NewsDetailPage"
              Title="News Detail">
+    <!--Reminder: VerticalStackLayout and Grid doesn't inheritly scroll, but CollectionView does.-->
     <VerticalStackLayout
         Spacing="10"
         Margin="5">

@@ -13,7 +13,7 @@ public partial class NewsListPage : ContentPage
         this.UserSelectedCategory = SelectedCategory; // Seeting the value of UserSelectedCategory to what was passed in from NewsHomePage. Now we can use UserSelectedCategory anywhere in this class
         NewsListContentPage.Title = SelectedCategory;
         GetBreakingNews();
-        ArticleList = new List<Article>();
+        ArticleList = new List<Article>(); // The declaration of this list done this way confuses me, but original code had it this way so... dont fix if it's not broken
 
 
     }
@@ -39,14 +39,16 @@ public partial class NewsListPage : ContentPage
 
     private void CvNewsArticles_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        // Get selected Category from the CollectionView and explicitly cast it as type Category
+        // Get selected Article from the CollectionView and explicitly cast it as type Article
+        // We cast it as an Article but if we pick an item from the collectionview which is a list of Articles, 
+        // an article is the type being selected
         var selectedArticle = e.CurrentSelection.FirstOrDefault() as Article;
 
         // If the cast is unsuccessful, exit this method without doing anything
         if (selectedArticle == null)
             return;
 
-        // Otherwise, lets go to the next page
+        // Otherwise, lets go to the next page with the Article Object (which contains all the details we need)
         Navigation.PushAsync(new NewsDetailPage(selectedArticle));
 
         // Deselect the item in the CollectionView by setting the SelectedItem property to null.
